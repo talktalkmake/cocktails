@@ -1,3 +1,11 @@
+## Project Planning
+### The scope of the project
+Using data from an API endpoint, we list the ingredients for various cocktails and create a visual for the combination of the ratio of ingredients.
+1. Find a suitable API.
+2. Work out what API calls we need to make.
+3. Define a basic UI for the ingredients and the glass.
+4. (Assuming measurements of ingredients are accessible) Use the API data to define a function for ratios in the glass.
+---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
