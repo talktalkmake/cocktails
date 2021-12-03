@@ -14,17 +14,24 @@ function App() {
   // .catch(error => console.log(error))
   // }, [type])
   useEffect(() => {
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + searchTerm)
-      .then(res => res.json())
-      .then(json => setData(json))
-      .catch(error => console.log(error))
+
+    (async () => {
+      try {
+        const response =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + searchTerm)
+        const json =      await response.json()
+        setData(json)
+      } catch(error) {
+        console.log(error)
+      }
+    })()
+
   }, [searchTerm])
   return (
     <>
       <h1>Drinks!</h1>
       <button onClick={() => setType(Math.random())}>Get a random cocktail</button>
       <label htmlFor="search">Search by ingredient</label>
-      <input type="text" onChange={event => setSearchTerm(event.target.value)} id="search" />
+      <input type="text" onChange={event => {setSearchTerm(event.target.value)}} id="search" />
       {<h3>{searchTerm} ({data.length})</h3>}
       <div className="drinks-holder">
         {data && (
